@@ -1,7 +1,7 @@
 require 'rails/generators/base' 
 require 'rails/generators/migration'      
 
-class BfriendGenerator < Rails::Generators::NamedBase
+class BfriendGenerator < Rails::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
 
   include Rails::Generators::Migration
@@ -65,10 +65,10 @@ end
   
  
   
-  def class_name
-    name.camelize
-  end 
-  def plural_class_name
-    plural_name.camelize
-  end
+  # def class_name
+  #   name.camelize
+  # end 
+  # def plural_class_name
+  #   plural_name.camelize
+  # end
 end
