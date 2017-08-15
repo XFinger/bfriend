@@ -1,4 +1,4 @@
-require 'rails/generators' 
+require 'rails/generators/base' 
 require 'rails/generators/migration'      
 
 class BfriendGenerator < Rails::Generators::NamedBase
