@@ -1,3 +1,4 @@
+
 class Bfriend < ApplicationRecord
   
   belongs_to :user

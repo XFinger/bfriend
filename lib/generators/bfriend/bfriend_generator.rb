@@ -14,7 +14,7 @@ class BfriendGenerator < Rails::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
 
   def create_migration_file
-    migration_template "migration.rb", "db/migrate/migration.rb"
+    migration_template "migration.rb", "db/migrate/create_bfriends.rb"
   end
   
   def add_route  
@@ -23,9 +23,10 @@ class BfriendGenerator < Rails::Generators::Base
    
   def add_to_user
    inject_into_file 'app/models/user.rb', before: "end"  do  
-        "has_many :bfriends \n
-         has_many :bfriends, :through => :bfriends \n  
-         has_many :inverse_bfriends, :class_name => \"bfriend\", :foreign_key => \"bfriend_id\" \n     
+        
+        "has_many :bfriends  
+         has_many :bfriends, :through => :bfriends    
+         has_many :inverse_bfriends, :class_name => \"bfriend\", :foreign_key => \"bfriend_id\"       
          has_many :inverse_bfriends, :through => :inverse_bfriends, :source => :user \n"
        
   end
