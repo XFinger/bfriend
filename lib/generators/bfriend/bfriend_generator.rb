@@ -5,8 +5,8 @@ require 'rails/generators/active_record'
 class BfriendGenerator < Rails::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
   include Rails::Generators::Migration
-  model_option :api, :type => :string, :aliases => "-a", :desc => "Generate contoller methods for API project"
-  model_option :ror, :type => :string, :aliases => "-r", :desc => "Generate contoller methods for Rails project"
+  class_option :api, :type => :string, :aliases => "-a", :desc => "Generate contoller methods for API project"
+  class_option :ror, :type => :string, :aliases => "-r", :desc => "Generate contoller methods for Rails project"
 
   # Implement the required interface for Rails::Generators::Migration
   def self.next_migration_number(dirname)
