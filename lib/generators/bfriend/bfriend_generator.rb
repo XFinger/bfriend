@@ -24,7 +24,7 @@ class BfriendGenerator < Rails::Generators::Base
    inject_into_file 'app/models/user.rb', after: "class User < ActiveRecord::Base"  do  
         "has_many :bfriends \n
          has_many :bfriends, :through => :bfriends \n  
-         has_many :inverse_bfriends, :class_name => "bfriend", :foreign_key => "bfriend_id" \n     
+         has_many :inverse_bfriends, :class_name => \"bfriend\", :foreign_key => \"bfriend_id\" \n     
          has_many :inverse_bfriends, :through => :inverse_bfriends, :source => :user \n"
        
   end
