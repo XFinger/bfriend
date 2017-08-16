@@ -23,7 +23,6 @@ class BfriendGenerator < Rails::Generators::Base
    
   def add_to_user
    inject_into_file 'app/models/user.rb', before: "end"  do  
-        
         "has_many :bfriends  
          has_many :bfriends, :through => :bfriends    
          has_many :inverse_bfriends, :class_name => \"bfriend\", :foreign_key => \"bfriend_id\"       
