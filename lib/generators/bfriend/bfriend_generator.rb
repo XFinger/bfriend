@@ -5,9 +5,9 @@ require 'rails/generators/active_record'
 class BfriendGenerator < Rails::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
   include Rails::Generators::Migration
-  class_option :api, :type => :string, :aliases => "-a", :desc => "Generate contoller methods for API project"
-  class_option :ror, :type => :string, :aliases => "-r", :desc => "Generate contoller methods for Rails project"
-
+  class_option :controller_gen, :type => :string, :aliases => "-t", :desc => "Template engine for the Controller. Available options are 'api' and 'ror'.", :default => "api"
+  class_option :ror, :type => :boolean, :default => false
+      
   # Implement the required interface for Rails::Generators::Migration
   def self.next_migration_number(dirname)
     ActiveRecord::Generators::Base.next_migration_number(dirname)
@@ -35,7 +35,8 @@ class BfriendGenerator < Rails::Generators::Base
   end
     
   def copy_templates
-    if class_option == "api"
+            if options[:api].to_s == "api"  
+
       puts "api"
     else puts "not"
     end
