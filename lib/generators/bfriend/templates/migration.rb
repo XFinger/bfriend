@@ -1,8 +1,9 @@
-class Create Bfriends < ActiveRecord::Migration
-  def self.up
-    SCHEMA_AUTO_INSERTED_HERE
-  end
-  def self.down
-    drop_table :Bfriends
-  end
+class Create Bfriends < ActiveRecord::Migration[1.0]
+    def change
+        create_table :bfriends  do |t|
+        t.integer :user_id
+        t.integer :bfriend_id
+        t.timestamps null: false
+        end
+    end
 end
