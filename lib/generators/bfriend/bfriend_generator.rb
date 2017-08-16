@@ -27,7 +27,7 @@ class BfriendGenerator < Rails::Generators::Base
   # end
   # # Every method that is declared below will be automatically executed when the generator is run
 
- def create_migration_file
+ #def create_migration_file
   #  f = File.open File.join(File.dirname(__FILE__), 'templates', 'schema.rb')
   #  schema = f.read; f.close
    
@@ -45,11 +45,11 @@ class BfriendGenerator < Rails::Generators::Base
   #  migration_template  'tmp/migration_ready.rb',
   #    "db/migrate/create_bfriends.rb "
   #  remove_file 'tmp/migration_ready.rb'
- end
+ #end
  
  
   def add_route  
-    route "resources bfriends.to_sym.inspect" 
+    route "resources :bfriends" 
     #resources :befriends
     # route "match 'download' => '#{plural_name}#download', :as => :download"
     # route "match 'download_html' => '#{plural_name}#download_html', :as => :download_html"
@@ -57,13 +57,13 @@ class BfriendGenerator < Rails::Generators::Base
    
   def add_to_user
    inject_into_file 'app/models/user.rb', after: "class User < ActiveRecord::Base"  do 
-     <<-RUBY
-        has_many :bfriends
-        has_many :bfriends, :through => :bfriends
-        has_many :inverse_bfriends, :class_name => "bfriend", :foreign_key => "bfriend_id"
-        has_many :inverse_bfriends, :through => :inverse_bfriends, :source => :user
+    
+        "has_many :bfriends"
+        "has_many :bfriends, :through => :bfriends"
+        "has_many :inverse_bfriends, :class_name => "bfriend", :foreign_key => "bfriend_id""
+        "has_many :inverse_bfriends, :through => :inverse_bfriends, :source => :user"
 
-     RUBY
+     
  end
 
 end
