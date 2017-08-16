@@ -21,12 +21,13 @@ class BfriendGenerator < Rails::Generators::Base
   end 
    
   def add_to_user
-   inject_into_file 'app/models/user.rb', after: "class User < ActiveRecord::Base"  do 
-        "has_many :bfriends 
-        has_many :bfriends, :through => :bfriends  
-        has_many :inverse_bfriends, :class_name => "bfriend", :foreign_key => "bfriend_id"      
-        has_many :inverse_bfriends, :through => :inverse_bfriends, :source => :user"
-   end
+   inject_into_file 'app/models/user.rb', after: "class User < ActiveRecord::Base"  do <<-'RUBY'
+     puts   "has_many :bfriends" 
+     puts   "has_many :bfriends, :through => :bfriends"  
+     puts   "has_many :inverse_bfriends, :class_name => "bfriend", :foreign_key => "bfriend_id" "     
+     puts   "has_many :inverse_bfriends, :through => :inverse_bfriends, :source => :user"
+     RUBY 
+  end
 
   end
     
