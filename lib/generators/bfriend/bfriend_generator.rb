@@ -1,5 +1,6 @@
 require 'rails/generators/base' 
 require 'rails/generators/migration'      
+require 'rails/generators/active_record'
 
 class BfriendGenerator < Rails::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
