@@ -1,4 +1,4 @@
-class Create Bfriends < ActiveRecord::Migration[1.0]
+class CreateBfriends < ActiveRecord::Migration
     def change
         create_table :bfriends  do |t|
         t.integer :user_id

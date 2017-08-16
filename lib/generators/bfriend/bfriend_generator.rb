@@ -5,7 +5,8 @@ require 'rails/generators/active_record'
 class BfriendGenerator < Rails::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
   include Rails::Generators::Migration
-  
+  class_option :api, :type => :string, :aliases => "-a", :desc => "API controller"
+
   # Implement the required interface for Rails::Generators::Migration
   def self.next_migration_number(dirname)
     ActiveRecord::Generators::Base.next_migration_number(dirname)
