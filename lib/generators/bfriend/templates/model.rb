@@ -1,4 +1,4 @@
-class Bfriend <ApplicationRecord
+class Bfriend < ApplicationRecord
   
   belongs_to :user
   belongs_to :bfriend, :class_name => 'User'
