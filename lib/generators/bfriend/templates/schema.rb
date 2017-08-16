@@ -1,4 +1,4 @@
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 1.0) do
 
      create_table :bfriends  do |t|
       t.integer :user_id

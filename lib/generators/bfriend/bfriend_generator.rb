@@ -27,13 +27,13 @@ class BfriendGenerator < Rails::Generators::Base
    migration = f.read; f.close
    migration.gsub!(/SCHEMA_AUTO_INSERTED_HERE/, schema)
    
-   tmp = File.open "tmp/~migration_ready.rb", "w"
+   tmp = File.open "tmp/migration_ready.rb", "w"
    tmp.write migration
    tmp.close
 
-   migration_template  'tmp/~migration_ready.rb',
+   migration_template  'tmp/migration_ready.rb',
      "db/migrate/create_bfriends.rb "
-   remove_file 'tmp/~migration_ready.rb'
+   remove_file 'tmp/migration_ready.rb'
  end
  
  
