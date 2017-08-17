@@ -38,9 +38,9 @@ class BfriendGenerator < Rails::Generators::Base
   def copy_templates
     template "model.rb", "app/models/friend.rb"
     if options[:controller_template].to_s == "ror"  or options[:ror]
-      template "ror_controller.rb", "app/controllers/friends_controller.rb"
+      template "ror_controller.rb", "app/controllers/friendships_controller.rb"
     else 
-      template "api_controller.rb", "app/controllers/friends_controller.rb"
+      template "api_controller.rb", "app/controllers/friendships_controller.rb"
       #TODO:add serializer
     end
     
