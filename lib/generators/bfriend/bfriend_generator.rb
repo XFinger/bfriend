@@ -35,7 +35,7 @@ class BfriendGenerator < Rails::Generators::Base
   end
     
   def copy_templates
-            if options[:api].to_s == "api"  
+            if options[:api].to_s == "ror"  
 
       puts "api"
     else puts "not"
