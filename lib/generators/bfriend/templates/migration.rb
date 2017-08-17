@@ -1,8 +1,8 @@
-class CreateBfriends < ActiveRecord::Migration
+class CreateFriendships < ActiveRecord::Migration
     def change
-        create_table :bfriends  do |t|
+        create_table :friendships  do |t|
         t.integer :user_id
-        t.integer :bfriend_id
+        t.integer :friend_id
         t.timestamps null: false
         end
     end

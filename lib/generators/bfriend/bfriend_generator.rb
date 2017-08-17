@@ -21,32 +21,31 @@ class BfriendGenerator < Rails::Generators::Base
   end
   
   def add_route  
-    route "resources :bfriends" 
+    route "resources :friendships" 
   end 
    
   def add_to_user
    inject_into_file 'app/models/user.rb', before: "end"  do  
-        "has_many :bfriends  
-         has_many :bfriends, :through => :bfriends    
-         has_many :inverse_bfriends, :class_name => \"bfriend\", :foreign_key => \"bfriend_id\"       
-         has_many :inverse_bfriends, :through => :inverse_bfriends, :source => :user \n"
+        "has_many :friendsips  
+         has_many :friends, :through => :friendships    
+         has_many :inverse_friendships, :class_name => \"Friendship\", :foreign_key => \"friend_id\"       
+         has_many :inverse_friends, :through => :inverse_friendships, :source => :user \n"
        
   end
 
   end
     
   def copy_templates
-    puts "#{options[:controller_template].to_s}"
-    puts "#{options[:controller_template]}"
-    puts "-----------------------"
-            if options[:controller_template].to_s == "ror"  or options[:ror]
-
-      puts "ror"
-    else puts "api"
+    template "model.rb", "app/models/friend.rb"
+    if options[:controller_template].to_s == "ror"  or options[:ror]
+      template "ror_controller.rb", "app/controllers/friends_controller.rb"
+    else 
+      template "api_controller.rb", "app/controllers/friends_controller.rb"
+      #TODO:add serializer
     end
     
-    template "model.rb", "app/models/bfriend.rb "   
-    template "controller.rb", "app/controllers/bfriends_controller.rb"
+       
+    
     
   end 
 end
