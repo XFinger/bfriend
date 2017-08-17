@@ -10,15 +10,13 @@ def create
   end
 end
 
-def destroy
-  @friend = current_user.friend.find(params[:id])
-  @friend.destroy
-  flash[:notice] = "Removed friendship."
-  redirect_to current_user
+def destroy  
+  @friendship.destroy
 end
+
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_wishlist
+    def set_friendship
       @friend = friend.find(params[:id])
     end
 
