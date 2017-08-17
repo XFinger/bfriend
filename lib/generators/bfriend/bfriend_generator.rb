@@ -45,7 +45,7 @@ class BfriendGenerator < Rails::Generators::Base
     end
     
     def generate_migration
-      rails g migration create_friendships user_id:integer friend_id:integer   
+      rails generate "migration" "create_friendships user_id:integer friend_id:integer"   
     
     
   end 
