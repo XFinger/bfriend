@@ -43,9 +43,9 @@ class BfriendGenerator < Rails::Generators::Base
       #TODO:add serializer
     end
   end 
-   
+
     def generate_migration
-      rails generate "migration" "create_friendships user_id:integer friend_id:integer"  
+      generate "migration" "create_friendships user_id:integer friend_id:integer"  
     end
    
 end
