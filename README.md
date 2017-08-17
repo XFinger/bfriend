@@ -1,8 +1,6 @@
 # Bfriend
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bfriend`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A simple generator for creating a Self-Referential Association for a friendship model. This is heavily based on [Ryan Bates rails cast #163](http://railscasts.com/episodes/163-self-referential-association).  
 
 ## Installation
 
@@ -22,17 +20,15 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Run the bfriend generator `rails g bfriend`. This will generate a friendship model, a migration, add a route to routes, add associations to your user model and generate a friendship controller suitable for use in an API.
+If you use the gem for a ruby on rails project, run `rails g bfriend -t --ror` .
+At this time no view templates are created and I will update this readme when and if I add them.
 
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+ 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/bfriend.
+Bug reports and pull requests are welcome on GitHub at https://github.com/XFinger/bfriend.
 
 ## License
 
