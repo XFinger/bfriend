@@ -31,8 +31,7 @@ class BfriendGenerator < Rails::Generators::Base
          has_many :inverse_friendships, :class_name => \"Friendship\", :foreign_key => \"friend_id\"       
          has_many :inverse_friends, :through => :inverse_friendships, :source => :user \n"
        
-  end
-
+    end
   end
     
   def copy_templates
@@ -43,9 +42,10 @@ class BfriendGenerator < Rails::Generators::Base
       template "api_controller.rb", "app/controllers/friendships_controller.rb"
       #TODO:add serializer
     end
-  end  
+  end 
+   
     def generate_migration
       rails generate "migration" "create_friendships user_id:integer friend_id:integer"  
-    
+    end
    
 end
