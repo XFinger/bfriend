@@ -15,10 +15,6 @@ class BfriendGenerator < Rails::Generators::Base
   end
 
   source_root File.expand_path('../templates', __FILE__)
-
-  # def create_migration_file
-  #   #migration_template "migration.rb", "db/migrate/create_friendships.rb"
-  # end
   
   def add_route  
     route "resources :friendships" 
@@ -35,7 +31,7 @@ class BfriendGenerator < Rails::Generators::Base
   end
     
   def copy_templates
-    template "model.rb", "app/models/friend.rb"
+    template "model.rb", "app/models/friendship.rb"
     if options[:controller_template].to_s == "ror"  or options[:ror]
       template "ror_controller.rb", "app/controllers/friendships_controller.rb"
     else 
