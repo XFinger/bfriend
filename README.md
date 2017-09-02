@@ -1,6 +1,7 @@
 # Bfriend
 
-A simple generator for creating a Self-Referential Association for a friendship model. This is heavily based on [Ryan Bates rails cast #163](http://railscasts.com/episodes/163-self-referential-association).  
+I often need friendship modeling for projects so I created a generator to get up and running quickly. 
+This is a simple generator for creating a Self-Referential Association for a friendship model. This is heavily based on [Ryan Bates rails cast #163](http://railscasts.com/episodes/163-self-referential-association). It isn't particularly sophisticated and dosn't include any tests so use at your own risk. 
 
 ## Installation
 
