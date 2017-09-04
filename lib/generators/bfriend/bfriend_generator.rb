@@ -25,11 +25,11 @@ class BfriendGenerator < Rails::Generators::Base
    inject_into_file 'app/models/user.rb', before: "end"  do  
         "
          has_many :friendships
-         has_many :befriended_friendships, :class_name => \"Friendship\", :foreign_key => \"friend_id\"
+         has_many :bfriended_friendships, :class_name => \"Friendship\", :foreign_key => \"friend_id\"
 
          # bfriended by me
          has_many :current_friends,       -> { where(friendships: { status: true}) }, through: :friendships, source: :friend
-         # befriended by friend
+         # bfriended by friend
 	       has_many :bfriended_friends,     -> { where(friendships: { status: true}) }, through: :bfriended_friendships, source: :user
          # requested by me
 	       has_many :requested_friendships, -> { where(friendships: { status: false}) }, through: :bfriended_friendships, source: :user 
