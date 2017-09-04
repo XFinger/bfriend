@@ -17,15 +17,37 @@ class BfriendGenerator < Rails::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
   
   def add_route  
-    route "resources :friendships" 
+    route "resources :friendships, only: [:create, :update, :destroy]"
   end 
-   
+
+
   def add_to_user
    inject_into_file 'app/models/user.rb', before: "end"  do  
-        "has_many :friendships
-         has_many :friends, :through => :friendships    
-         has_many :inverse_friendships, :class_name => \"Friendship\", :foreign_key => \"friend_id\"       
-         has_many :inverse_friends, :through => :inverse_friendships, :source => :user \n"
+        "
+         has_many :friendships
+         has_many :befriended_friendships, :class_name => \"Friendship\", :foreign_key => \"friend_id\"
+         # bfriended by me
+         has_many :current_friends,       -> { where(friendships: { status: true}) }, through: :friendships, source: :friend
+         # befriended by friend
+	       has_many :bfriended_friends,     -> { where(friendships: { status: true}) }, through: :befriended_friendships, source: :user
+         # requested by me
+	       has_many :requested_friendships, -> { where(friendships: { status: false}) }, through: :befriended_friendships, source: :user 
+         # requested by friend
+         has_many :pending_friends,       -> { where(friendships: { status: false}) }, through: :friendships, source: :friend
+         \n
+        
+         # combine the sets to see all your friends
+      	 def friends
+	          current_friends | bfriended_friends
+	       end
+
+         # combine the sets to see pending and requested friendships
+         def pending
+		       pending_friends | requested_friendships
+	       end
+        
+         \n 
+        "
        
     end
   end
@@ -36,12 +58,11 @@ class BfriendGenerator < Rails::Generators::Base
       template "ror_controller.rb", "app/controllers/friendships_controller.rb"
     else 
       template "api_controller.rb", "app/controllers/friendships_controller.rb"
-      #TODO:add serializer
     end
   end 
 
-    def generate_migration
-      generate "migration", "create_friendships user_id:integer friend_id:integer status:state"  
-    end
+  def generate_migration #after generating the migration, add 'default: false' to status
+    generate "migration", "create_friendships user_id:integer friend_id:integer status:boolean 
+  end
    
 end
