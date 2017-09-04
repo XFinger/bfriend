@@ -62,7 +62,7 @@ class BfriendGenerator < Rails::Generators::Base
   end 
 
   def generate_migration #after generating the migration, add 'default: false' to status
-    generate "migration", "create_friendships user_id:integer friend_id:integer status:boolean 
+    generate "migration", "create_friendships user_id:integer friend_id:integer status:boolean "
   end
    
 end
