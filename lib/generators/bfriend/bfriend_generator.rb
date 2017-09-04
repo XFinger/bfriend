@@ -26,12 +26,13 @@ class BfriendGenerator < Rails::Generators::Base
         "
          has_many :friendships
          has_many :befriended_friendships, :class_name => \"Friendship\", :foreign_key => \"friend_id\"
+
          # bfriended by me
          has_many :current_friends,       -> { where(friendships: { status: true}) }, through: :friendships, source: :friend
          # befriended by friend
-	       has_many :bfriended_friends,     -> { where(friendships: { status: true}) }, through: :befriended_friendships, source: :user
+	       has_many :bfriended_friends,     -> { where(friendships: { status: true}) }, through: :bfriended_friendships, source: :user
          # requested by me
-	       has_many :requested_friendships, -> { where(friendships: { status: false}) }, through: :befriended_friendships, source: :user 
+	       has_many :requested_friendships, -> { where(friendships: { status: false}) }, through: :bfriended_friendships, source: :user 
          # requested by friend
          has_many :pending_friends,       -> { where(friendships: { status: false}) }, through: :friendships, source: :friend
          \n
