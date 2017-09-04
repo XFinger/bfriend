@@ -21,7 +21,7 @@ Or install it yourself as:
 
 ## Usage
 
-Run the bfriend generator `rails g bfriend`. This will generate a friendship model, a migration, add routes & associations to your user model and generate a friendship controller suitable for use in an API.
+Run the bfriend generator `rails g bfriend -t --api`. This will generate a friendship model, a migration, add routes & associations to your user model and generate a friendship controller suitable for use in an API.
 
 If you are using  the gem for a ruby on rails project, run `rails g bfriend -t --ror` .
 
