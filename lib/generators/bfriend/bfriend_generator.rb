@@ -27,13 +27,13 @@ class BfriendGenerator < Rails::Generators::Base
          has_many :friendships
          has_many :bfriended_friendships, :class_name => \"Friendship\", :foreign_key => \"friend_id\"
 
-         # bfriended by me
+         # bfriended by user
          has_many :current_friends,       -> { where(friendships: { status: true}) }, through: :friendships, source: :friend
          # bfriended by friend
 	       has_many :bfriended_friends,     -> { where(friendships: { status: true}) }, through: :bfriended_friendships, source: :user
-         # requested by me
-	       has_many :requested_friendships, -> { where(friendships: { status: false}) }, through: :bfriended_friendships, source: :user 
          # requested by friend
+	       has_many :requested_friends, -> { where(friendships: { status: false}) }, through: :bfriended_friendships, source: :user 
+         # requested by user
          has_many :pending_friends,       -> { where(friendships: { status: false}) }, through: :friendships, source: :friend
          \n
         
@@ -44,7 +44,7 @@ class BfriendGenerator < Rails::Generators::Base
 
          # combine the sets to see pending and requested friendships
          def pending
-		       pending_friends | requested_friendships
+		       pending_friends | requested_friends
 	       end
         
          \n 
