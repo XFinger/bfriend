@@ -1,7 +1,7 @@
 
 
 I often need friendship modeling for projects so I created a generator to get up and running quickly. 
-This is a simple generator for creating a Self-Referential Association for a friendship model. This is heavily based on [Ryan Bates rails cast #163](http://railscasts.com/episodes/163-self-referential-association) with some help from [this guy on github](https://github.com/tobyond?tab=repositories). It isn't particularly sophisticated and dosn't include any tests so use at your own risk. 
+This is a simple generator for creating a Self-Referential Association for a friendship model. Heavily based on [Ryan Bates rails cast #163](http://railscasts.com/episodes/163-self-referential-association) with some help from [this guy on github](https://github.com/tobyond?tab=repositories). It isn't particularly sophisticated or polished and doesn't include any tests so use at your own risk. 
 
 ## Installation
 
@@ -33,14 +33,17 @@ Run your migration
 
 Now you can:
 
-    request friendship:          <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
-    accept/decline friendship:   <%= link_to "Accept",  friendship_path(id: request.id), method: "put" %>
-                                 <%= link_to "Decline", friendship_path(id: request.id), method: :delete %>
-    end friendship:              <%= link_to "End", friendship_path(id: request.id), method: :delete %>
-    view friends:                <% current_user.friends.each do |friend| %>
-                                     <%= friend.username %>
-                                 <% end %>
-
+    request friendship:          Friendship.create( user_id: id, friend_id: id )
+    accept friendship:           Friendship.update( status: true )
+    decline friendship:          Friendship.delete
+    end friendship:              Friendship.delete
+    all friends:                 user.friends
+    all requests:                user.pending
+    friend_requests:             user.pending_friends
+    requested_friends:           user.requested_friends
+    friendship by user:          user.current_friends
+    friendship by friend:        user.bfriended_friends
+    
 
 At this time no view templates are created and I will update this readme when and if I add them.
  
