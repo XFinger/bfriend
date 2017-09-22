@@ -6,8 +6,8 @@ require "bfriend/version"
 Gem::Specification.new do |spec|
   spec.name          = "bfriend"
   spec.version       = Bfriend::VERSION
-  spec.authors       = ["xfinger"]
-  spec.email         = ["xfinger@gmail.com"]
+  spec.authors       = "xfinger"
+  spec.email         = "xfinger@gmail.com"
 
   spec.summary       = %q{A simple friendship model}
   spec.description   = %q{Based on Railscasts #163 Self-Referential Association}
