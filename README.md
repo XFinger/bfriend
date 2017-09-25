@@ -21,9 +21,9 @@ Or install it yourself as:
 
 ## Usage
 
-Run the bfriend generator `rails g bfriend -t --api`. This will generate a friendship model, a migration, add routes & associations to your user model and generate a friendship controller suitable for use in an API.
+Run the bfriend generator `rails g bfriend`. This will generate a friendship model, a migration, add routes & associations to your user model and generate a friendship controller suitable for use in an API.
 
-If you are using  the gem for a ruby on rails project, run `rails g bfriend -t --ror` .
+If you are using the gem for a ruby on rails project, run `rails g bfriend --ror` .
 
 Edit the migration to give the status a default of false 
 
@@ -47,6 +47,8 @@ Now you can:
 
 At this time no view templates are created and I will update this readme when and if I add them.
  
+### Upgrading to >=  0.8.0
+The class methods have been moved to the bfriend module of the gem so you will need to remove them from your user model and add `include Bfriend`
 
 ## Contributing
 
